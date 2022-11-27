@@ -2,6 +2,7 @@ package main
 
 import (
 	depthfinder "aoc/01"
+	smokebasin "aoc/09"
 	"aoc/inputs"
 )
 
@@ -14,4 +15,6 @@ func errorCheck(e error) {
 func main() {
 	depthfinder.GetdepthIncreaseCount(inputs.DepthFinderInputs)
 	depthfinder.GetDepthSumIncreaseCount(inputs.DepthFinderInputs)
+
+	smokebasin.Solution1()
 }

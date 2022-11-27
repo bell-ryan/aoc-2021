@@ -25,7 +25,7 @@ func GetdepthIncreaseCount(inputs []int) {
 		}
 	}
 
-	fmt.Printf("Solution 1 answer: %d\n", count)
+	fmt.Printf("Day 1 - part 1 answer: %d\n", count)
 }
 
 /*
@@ -49,5 +49,5 @@ func GetDepthSumIncreaseCount(inputs []int) {
 		previousSum = currentSum
 	}
 
-	fmt.Printf("Solution 2 answer: %d\n", count)
+	fmt.Printf("Day 1 - part 2 answer: %d\n", count)
 }
