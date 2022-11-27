@@ -1,4 +1,4 @@
-package main
+package depthfinder
 
 import "fmt"
 
@@ -12,7 +12,7 @@ func errorCheck(e error) {
 count the number of times a depth measurement increases from the previous measurement.
 (There is no measurement before the first measurement.)
 */
-func solution1() {
+func GetdepthIncreaseCount(inputs []int) {
 	count := 0
 	for i := 0; i < len(inputs); i++ {
 		if i == 0 {
@@ -33,7 +33,7 @@ count the number of times the sum of measurements in this sliding window increas
 So, compare A with B, then compare B with C, then C with D, and so on.
 Stop when there aren't enough measurements left to create a new three-measurement sum.
 */
-func soltution2() {
+func GetDepthSumIncreaseCount(inputs []int) {
 	count := 0
 	previousSum := 0
 	for i := 0; i < len(inputs)-2; i++ {
@@ -50,9 +50,4 @@ func soltution2() {
 	}
 
 	fmt.Printf("Solution 2 answer: %d\n", count)
-}
-
-func main() {
-	solution1()
-	soltution2()
 }
