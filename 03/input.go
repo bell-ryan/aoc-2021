@@ -1,8 +1,21 @@
 package binarydiagnostic
 
 // This input value is only ever used by this package
-// so co-locating it and making it private (implicitly 
+// so co-locating it and making it private (implicitly
 // with first letter of variable name being lower-cased).
+var sampleData = `00100
+11110
+10110
+10111
+10101
+01111
+00111
+11100
+10000
+11001
+00010
+01010`
+
 var input = `000110011011
 010011010000
 111101010001
