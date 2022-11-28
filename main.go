@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	depthfinder "aoc/01"
 	dive "aoc/02"
 	binarydiagnostic "aoc/03"
@@ -15,7 +17,7 @@ func main() {
 	// Day 2
 	dive.Start()
 	// Day 3
-	binarydiagnostic.Part1()
+	fmt.Printf("Day 3 - part 1 answer %d\n", binarydiagnostic.Part1())
 	// Day 9
 	smokebasin.Solution1()
 }
