@@ -22,7 +22,7 @@ func errorCheck(e error) {
 func Start() {
 	sub := submarine{location: 0, depth: 0}
 	subAdvanced := submarine{}
-	directionsList := strings.Split(inputs.Day2, "\n")
+	directionsList := strings.Split(inputs.GetInputData(2), "\n")
 
 	for _, directions := range directionsList {
 		direction := strings.Split(directions, " ")

@@ -13,7 +13,7 @@ func errorCheck(e error) {
 	}
 }
 func splitInputs() [][]int {
-	data := inputs.Day9
+	data := inputs.GetInputData(9)
 	mainSlice := strings.Split(data, "\n")
 	finalSlice := [][]int{}
 	for i := 0; i < len(mainSlice); i++ {
