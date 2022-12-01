@@ -8,10 +8,10 @@ import (
 )
 
 type board struct {
-	winner bool
-	matrix [5][5]int // create a matrix with all 0
-	actual [5][5]string
-	Score  int
+	winner    bool
+	grid      [5][5]int
+	Score     int
+	numberMap map[string][2]int
 }
 
 func (b *board) checkWinner() {
@@ -19,8 +19,8 @@ func (b *board) checkWinner() {
 		rowTotal := 0
 		colTotal := 0
 		for col := 0; col < 5; col++ {
-			rowTotal += b.matrix[row][col]
-			colTotal += b.matrix[col][row]
+			rowTotal += b.grid[row][col]
+			colTotal += b.grid[col][row]
 		}
 		if rowTotal == 5 || colTotal == 5 {
 			b.winner = true
@@ -30,17 +30,13 @@ func (b *board) checkWinner() {
 
 }
 func (b *board) checkNumber(num string) {
-	for row := 0; row < 5; row++ {
-		for col := 0; col < 5; col++ {
-			if num == b.actual[row][col] {
-				n, err := strconv.Atoi(num)
-				utils.ErrorCheck(err)
-
-				b.Score -= n
-				b.matrix[row][col] = 1
-
-			}
-		}
+	loc, exists := b.numberMap[num]
+	if exists {
+		n, err := strconv.Atoi(num)
+		utils.ErrorCheck(err)
+		b.Score -= n
+		b.grid[loc[0]][loc[1]] = 1
+		b.checkWinner()
 	}
 
 }
@@ -55,12 +51,14 @@ func buildBoards(data string) ([]string, []board) {
 	for bi, boardData := range boards {
 		b := board{}
 		rows := strings.Split(boardData, "\n")
+		b.numberMap = make(map[string][2]int)
+
 		for ri, row := range rows {
 			row = strings.ReplaceAll(row, "  ", " ")
 			row = strings.TrimLeft(row, " ")
 			cols := strings.Split(row, " ")
 			for ci, col := range cols {
-				b.actual[ri][ci] = col
+				b.numberMap[col] = [2]int{ri, ci}
 				colInt, err := strconv.Atoi(col)
 				utils.ErrorCheck(err)
 
@@ -85,7 +83,6 @@ out:
 		for i := range boardList {
 			board := &boardList[i]
 			board.checkNumber(num)
-			board.checkWinner()
 			if board.winner {
 				n, err := strconv.Atoi(num)
 				utils.ErrorCheck(err)
